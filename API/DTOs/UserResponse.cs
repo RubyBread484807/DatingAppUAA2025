@@ -1,4 +1,5 @@
-using System;
+using API.Entitites;
+using API.Intefaces;
 
 namespace API.DTOs;
 
