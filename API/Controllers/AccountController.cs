@@ -3,6 +3,7 @@ using System.Text;
 using API.Data;
 using API.DTOs;
 using API.Entitites;
+using API.Extensions;
 using API.Intefaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +14,9 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
 {
     [HttpPost("register")]
     public async Task<ActionResult<UserResponse>> Register(RegisterRequest request)
-    
     {
         if (await EmailExists(request.Email)) return BadRequest("Email is already in use");
-
         using var hmac = new HMACSHA512();
-
         var user = new AppUser
         {
             DisplayName = request.DisplayName,
@@ -26,17 +24,10 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
             PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
             PasswordSalt = hmac.Key
         };
-
         context.Users.Add(user);
         await context.SaveChangesAsync();
 
-        return new UserResponse
-        {
-            Id = user.Id,
-            Email = user.Email,
-            DisplayName = user.DisplayName,
-            Token = tokenService.CreateToken(user)
-        };
+        return user.ToDto(tokenService);
     }
 
     [HttpPost("login")]
@@ -44,25 +35,15 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
     public async Task<ActionResult<UserResponse>> Login(LoginRequest request)
     {
         var user = await context.Users.SingleOrDefaultAsync(u => u.Email == request.Email);
-
         if (user == null) return Unauthorized("Invalid email or password");
-
         using var hmac = new HMACSHA512(user.PasswordSalt);
-
         var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password));
-
         for (var i = 0; i < computedHash.Length; i++)
         {
             if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid email or password");
         }
 
-        return new UserResponse
-        {
-            Id = user.Id,
-            Email = user.Email,
-            DisplayName = user.DisplayName,
-            Token = tokenService.CreateToken(user)
-        };
+        return user.ToDto(tokenService);
     }
 
     private async Task<bool> EmailExists(string email)
