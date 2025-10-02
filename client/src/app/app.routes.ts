@@ -4,10 +4,11 @@ import { Home } from '../features/home/home';
 import { MemberDetail } from '../features/members/member-detail/member-detail';
 import { Lists } from '../features/lists/lists';
 import { Messages } from '../features/messages/messages';
+import { authGuard } from '../core/guard/auth-guard';
 
 export const routes: Routes = [
     { path: "", component: Home}, //ruta raiz
-    { path: "members", component: MemberList },
+    { path: "members", component: MemberList, canActivate: [authGuard]}, //protejo la ruta con el guard
     { path: "members/(id)", component: MemberDetail},
     { path: "lists", component: Lists},
     { path: "messages", component: Messages},
