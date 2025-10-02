@@ -7,10 +7,17 @@ import { Messages } from '../features/messages/messages';
 import { authGuard } from '../core/guard/auth-guard';
 
 export const routes: Routes = [
-    { path: "", component: Home}, //ruta raiz
-    { path: "members", component: MemberList, canActivate: [authGuard]}, //protejo la ruta con el guard
-    { path: "members/(id)", component: MemberDetail},
-    { path: "lists", component: Lists},
-    { path: "messages", component: Messages},
-    { path: "**", component: Home} // ruta vacio cuando no hace "match" con ninguna de las anteriores
+    { path: "", component: Home }, //ruta raiz
+    {
+        path: "", //ruta vacia para agrupar las rutas que quiero proteger
+        runGuardsAndResolvers: "always", //para que el guard se ejecute siempre
+        canActivate: [authGuard], //aqui pongo el guard
+        children: [
+            { path: "members", component: MemberList, canActivate: [authGuard] }, //protejo la ruta con el guard
+            { path: "members/(id)", component: MemberDetail },
+            { path: "lists", component: Lists },
+            { path: "messages", component: Messages },
+        ] //hijos de la ruta vacia
+    },
+    { path: "**", component: Home } // ruta vacio cuando no hace "match" con ninguna de las anteriores
 ];
