@@ -26,7 +26,7 @@ export class App implements OnInit {
     this.members.set(await this.getMembers());
   }
 
-  setCurrentUser() {
+  setCurrentUser(): void {
     const userString = localStorage.getItem("user");
     if (!userString) return;
     const user = JSON.parse(userString);
