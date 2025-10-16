@@ -7,6 +7,7 @@ import { Messages } from '../features/messages/messages';
 import { authGuard } from '../core/guard/auth-guard';
 import { TestErrors } from '../features/test-errors/test-errors';
 import { NotFound } from '../shared/error/not-found/not-found';
+import { ServerError } from '../shared/error/server-error/server-error';
 
 export const routes: Routes = [
     { path: "", component: Home }, //ruta raiz
@@ -22,5 +23,6 @@ export const routes: Routes = [
         ] //hijos de la ruta vacia
     },
     { path: "errors", component: TestErrors },
-    { path: "**", component: NotFound} // ruta vacio cuando no hace "match" con ninguna de las anteriores
+    { path: "server-error", component: ServerError },
+    { path: "**", component: NotFound } // ruta vacio cuando no hace "match" con ninguna de las anteriores
 ];
