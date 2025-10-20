@@ -1,10 +1,9 @@
-using System.ComponentModel.DataAnnotations.Schema;
+namespace API.DTOs;
 
-namespace API.Entitites;
-
-public class Member
+public class SeedUserDto
 {
-    public string Id { get; set; } = null!;
+    public required string Id { get; set; }
+    public required string Email { get; set; }
     public DateOnly BirthDay { get; set; }
     public string? ImageUrl { get; set; }
     public required string DisplayName { get; set; }
@@ -14,9 +13,4 @@ public class Member
     public string? Description { get; set; }
     public required string City { get; set; }
     public required string Country { get; set; }
-
-    // Navigation properties
-    [ForeignKey(nameof(Id))]
-    public AppUser User { get; set; } = null!;
-    public List<Photo> Photos { get; set; } = [];
 }
