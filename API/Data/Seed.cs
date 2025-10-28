@@ -24,14 +24,14 @@ public class Seed
 
         foreach (var seedUser in seedUsers)
         {
-            using var hmac = new HMACSHA3_512();
+            using var hmac = new HMACSHA512();
             var user = new AppUser
             {
                 Id = seedUser.Id,
-                Email = seedUser.Email.ToLower(),
-                DisplayName = seedUser.DisplayName.ToLower(),
+                Email = seedUser.Email,
+                DisplayName = seedUser.DisplayName,
                 ImageUrl = seedUser.ImageUrl,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("Pa$$w0rd")),
+                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("password")),
                 PasswordSalt = hmac.Key,
                 Member = new Member
                 {

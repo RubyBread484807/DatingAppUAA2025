@@ -1,9 +1,7 @@
-using API.Data;
 using API.Entitites;
 using API.Intefaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
@@ -28,7 +26,7 @@ public class MembersController(IMembersRepository membersRepository) : BaseApiCo
         return member;
     }
 
-    [HttpGet("(id)/photos")]
+    [HttpGet("{id}/photos")]
     public async Task<ActionResult<IReadOnlyList<Photo>>> GetPhotos(string id)
     {
         return Ok(await membersRepository.GetPhotosAsync(id));

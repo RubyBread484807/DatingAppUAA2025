@@ -31,7 +31,6 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
     }
 
     [HttpPost("login")]
-
     public async Task<ActionResult<UserResponse>> Login(LoginRequest request)
     {
         var user = await context.Users.SingleOrDefaultAsync(u => u.Email == request.Email);
