@@ -2,17 +2,18 @@ using API.DTOs;
 using API.Entitites;
 using API.Intefaces;
 
-namespace API.Extensions;
+namespace API.Mappers;
 
-public static class AppUserExtensions
+public static class AppUserMapper
 {
     public static UserResponse ToDto(this AppUser user, ITokenService tokenService)
     {
         return new UserResponse
         {
             Id = user.Id,
-            Email = user.Email,
             DisplayName = user.DisplayName,
+            Email = user.Email,
+            ImageUrl = user.ImageUrl,
             Token = tokenService.CreateToken(user)
         };
     }
