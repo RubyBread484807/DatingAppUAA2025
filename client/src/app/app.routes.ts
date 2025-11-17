@@ -17,7 +17,7 @@ export const routes: Routes = [
         canActivate: [authGuard], //aqui pongo el guard
         children: [
             { path: "members", component: MemberList, canActivate: [authGuard] }, //protejo la ruta con el guard
-            { path: "members/(id)", component: MemberDetail },
+            { path: "members/:id", component: MemberDetail },
             { path: "lists", component: Lists },
             { path: "messages", component: Messages },
         ] //hijos de la ruta vacia
