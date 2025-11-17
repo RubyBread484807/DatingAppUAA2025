@@ -11,10 +11,7 @@ import { ServerError } from '../shared/error/server-error/server-error';
 import { MemberProfile } from '../features/member-profile/member-profile';
 import { MemberPhotos } from '../features/member-photos/member-photos';
 import { MemberMessages } from '../features/member-messages/member-messages';
-<<<<<<< HEAD
 import { memberResolver } from '../features/members/member-resolver';
-=======
->>>>>>> 5c032c53062d565de699228c3c68d9b4a5ab0527
 
 export const routes: Routes = [
     { path: "", component: Home }, //ruta raiz
@@ -26,11 +23,8 @@ export const routes: Routes = [
             { path: "members", component: MemberList, canActivate: [authGuard] }, //protejo la ruta con el guard
             { 
                 path: "members/:id", 
-<<<<<<< HEAD
                 resolve: { member: memberResolver },
                 runGuardsAndResolvers: "always",
-=======
->>>>>>> 5c032c53062d565de699228c3c68d9b4a5ab0527
                 component: MemberDetail,
                 children: [
                     { path: "", redirectTo: "profile", pathMatch: "full" },
