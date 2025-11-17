@@ -1,6 +1,10 @@
 import { Component, inject, OnInit, Signal, signal } from '@angular/core';
 import { MembersService } from '../../../core/services/members-service';
+<<<<<<< HEAD
 import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+=======
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+>>>>>>> 5c032c53062d565de699228c3c68d9b4a5ab0527
 import { AsyncPipe } from '@angular/common';
 import { filter, Observable } from 'rxjs';
 import { Member } from '../../../types/member';
