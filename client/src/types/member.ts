@@ -1,6 +1,6 @@
 export interface Member {
     id: string;
-    birthdate: string; 
+    birthDay: string; 
     imageUrl?: string;
     displayName: string;
     created: string; 
