@@ -1,4 +1,4 @@
-<div class="card bg-base-100 w-4/15 mx-auto flex flex-col p-6 rounded-lg shadow-lg">
+<div class="card bg-base-100 w-1/3 mx-auto flex flex-col p-6 rounded-lg shadow-lg">
     <div class="card-title justify-center text-3xl text-primary">Sign up</div>
     <div class="card-body w-full">
         <form [formGroup]="registerForm" class="flex flex-col gap-4 w-full" (ngSubmit)="register()">
@@ -6,9 +6,14 @@
                 <span>Email</span>
                 <input class="input w-full" formControlName="email" placeholder="Email">
             </label>
-            <label class="floating-label">
+            <label class="floating-label" text-left>
                 <span>Display Name</span>
-                <input class="input w-full" formControlName="displayName" placeholder="Display Name">
+                <input class="input w-full" [class.input-error]="registerForm.controls['displayName'].invalid
+                                && registerForm.controls['displayName'].touched" formControlName="displayName"
+                    placeholder="Display Name">
+                @if (registerForm.controls['displayName'].invalid && registerForm.controls['displayName'].touched) {
+                <div class="validation-hint text-error text-xs text-left">Display name is required</div>
+                }
             </label>
             <label class="floating-label">
                 <span>Password</span>
@@ -16,7 +21,8 @@
             </label>
             <label class="floating-label">
                 <span>Confirm Password</span>
-                <input class="input w-full" formControlName="confirmPassword" placeholder="Confirm Password" type="password">
+                <input class="input w-full" formControlName="confirmPassword" placeholder="Confirm Password"
+                    type="password">
             </label>
             <div class="flex items-center justify-end gap-3">
                 <button class="btn" (click)="cancel()" type="button">Cancel</button>
