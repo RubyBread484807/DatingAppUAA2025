@@ -17,6 +17,8 @@ public class MembersController(IMembersRepository membersRepository,  IPhotoServ
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<Member>>> GetMembers([FromQuery] MemberRequest request)
     {
+        request.CurrentMemberId = User.GetMemberId();
+        
         return Ok(await membersRepository.GetMembersAsync(request));
     }
 
