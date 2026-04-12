@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using API.Data;
 using API.DTOs;
-using API.Entitites;
+using API.Entities;
 using API.Mappers;
 using API.Intefaces;
 using Microsoft.AspNetCore.Mvc;
@@ -45,7 +45,15 @@ public class AccountController(AppDbContext context, ITokenService tokenService)
             DisplayName = request.DisplayName,
             Email = request.Email,
             PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password)),
-            PasswordSalt = hmac.Key
+            PasswordSalt = hmac.Key,
+            Member = new Member
+            {
+                DisplayName = request.DisplayName,
+                Gender = request.Gender,
+                City = request.City,
+                Country = request.Country,
+                BirthDay = request.BirthDay
+            }
         };
         context.Users.Add(user);
         await context.SaveChangesAsync();
