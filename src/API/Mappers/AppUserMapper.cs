@@ -1,5 +1,5 @@
 using API.DTOs;
-using API.Entitites;
+using API.Entities;
 using API.Intefaces;
 
 namespace API.Mappers;

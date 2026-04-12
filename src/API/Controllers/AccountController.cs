@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using API.Data;
 using API.DTOs;
-using API.Entitites;
+using API.Entities;
 using API.Mappers;
 using API.Intefaces;
 using Microsoft.AspNetCore.Mvc;

@@ -1,4 +1,4 @@
-using API.Entitites;
+using API.Entities;
 using API.Helpers;
 using API.Intefaces;
 using Microsoft.EntityFrameworkCore;
