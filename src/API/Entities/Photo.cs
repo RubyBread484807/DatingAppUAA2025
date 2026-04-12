@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace API.Entitites;
+namespace API.Entities;
 
 public class Photo
 {

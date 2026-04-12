@@ -1,4 +1,4 @@
-using API.Entitites;
+using API.Entities;
 
 namespace API.Mappers;
 
