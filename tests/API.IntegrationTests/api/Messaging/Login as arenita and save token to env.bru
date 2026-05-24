@@ -5,15 +5,15 @@ meta {
 }
 
 post {
-  url: {{baseUrl}}/api/login
+  url: {{baseUrl}}/api/account/login
   body: json
   auth: inherit
 }
 
 body:json {
   {
-  	"email": "arenita@test.com",
-  	"password": "password"
+    "email": "arenita@test.com",
+    "password": "password"
   }
 }
 
@@ -29,6 +29,16 @@ script:post-response {
   }
 }
 
+tests {
+  test("Should be able to login", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+  
+  const data = res.body;
+  bru.setVar('token', data.token);
+}
+
 settings {
   encodeUrl: true
+  timeout: 0
 }
