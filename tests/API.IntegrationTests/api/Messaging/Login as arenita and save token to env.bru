@@ -17,23 +17,11 @@ body:json {
   }
 }
 
-script:post-response {
-  const user = res.getBody();
-  
-  test("Has properties", function () {
-      expect(user).to.have.property('accessToken');
-  });
-  
-  if (test("Has properties")) {
-      bru.setGlobalEnvVar('token', user.accessToken);
-  }
-}
-
 tests {
   test("Should be able to login", function() {
     expect(res.getStatus()).to.equal(200);
   });
-  
+
   const data = res.body;
   bru.setVar('token', data.token);
 }
