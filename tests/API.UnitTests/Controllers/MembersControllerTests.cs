@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using API.Controllers;
 using API.Entities;
 using API.Helpers;
-using API.Intefaces;
 using API.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;

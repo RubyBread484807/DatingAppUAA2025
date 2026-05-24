@@ -1,7 +1,7 @@
 using API.Entities;
 using API.Helpers;
 
-namespace API.Intefaces;
+namespace API.Interfaces;
 
 public interface IMembersRepository
 {

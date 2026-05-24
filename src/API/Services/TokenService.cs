@@ -1,4 +1,4 @@
-using API.Intefaces;
+using API.Interfaces;
 using API.Entities;
 using System.Text;
 using System.Security.Claims;

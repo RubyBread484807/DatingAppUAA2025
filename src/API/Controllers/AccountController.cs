@@ -4,7 +4,7 @@ using API.Data;
 using API.DTOs;
 using API.Entities;
 using API.Mappers;
-using API.Intefaces;
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

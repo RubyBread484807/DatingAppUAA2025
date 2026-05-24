@@ -1,7 +1,6 @@
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
-using API.Intefaces;
 using API.Interfaces;
 using API.Mappers;
 using Microsoft.AspNetCore.Mvc;
