@@ -13,6 +13,7 @@ import { MemberPhotos } from '../features/member-photos/member-photos';
 import { MemberMessages } from '../features/member-messages/member-messages';
 import { memberResolver } from '../features/members/member-resolver';
 import { preventUnsavedChangesGuard } from '../core/guards/prevent-unsaved-changes-guard';
+import { Admin } from '../features/admin/admin';
 
 export const routes: Routes = [
     { path: "", component: Home }, //ruta raiz
@@ -37,6 +38,7 @@ export const routes: Routes = [
             },
             { path: "lists", component: Lists },
             { path: "messages", component: Messages },
+            { path: "admin", component: Admin }
         ] //hijos de la ruta vacia
     },
     { path: "errors", component: TestErrors },
