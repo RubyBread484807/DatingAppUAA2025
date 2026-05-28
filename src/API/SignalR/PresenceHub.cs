@@ -25,7 +25,7 @@ public class PresenceHub(PresenceTracker presenceTracker) : Hub
 
     private string GetUserId()
     {
-        return Context.User?.FindFirstValue(ClaimTypes.Email) ?? throw new HubException("Cannot get member id");
+        return Context.User?.FindFirstValue(ClaimTypes.NameIdentifier) ?? throw new HubException("Cannot get member id");
     }
 
     private async Task GetOnlineUsers()
