@@ -49,6 +49,7 @@ export class MemberMessages implements OnInit, OnDestroy {
       this.messageContent = '';
     });
   }
+  
   ngOnDestroy(): void {
     this.messagesService.stopHubConnection();
   }
